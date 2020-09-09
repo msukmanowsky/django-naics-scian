@@ -18,7 +18,9 @@ def make_choices(classifications):
 
 ALL_CODE_CHOICES = make_choices(classifications)
 
-SECTOR_CODE_CHOICES = make_choices([c for c in classifications if c.structure == "Sector"])
+SECTOR_CODE_CHOICES = make_choices(
+    [c for c in classifications if c.structure == "Sector"]
+)
 
 INDUSTRY_CODE_CHOICES = make_choices(
     [
