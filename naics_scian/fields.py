@@ -43,7 +43,7 @@ class NAICSCodeField(models.CharField):
 class NAICSSectorCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
-        kwargs["choices"] = SECTOR_CHOICES
+        kwargs["choices"] = SECTOR_CODE_CHOICES
         kwargs.setdefault("blank", True)
         kwargs.setdefault("null", True)
         super().__init__(*args, **kwargs)
