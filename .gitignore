@@ -1,0 +1,7 @@
+.python-version
+.pytest_cache
+*.pyc
+dist
+*.egg-info
+.DS_Store
+.vscode
