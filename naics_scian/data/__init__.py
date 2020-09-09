@@ -1,10 +1,11 @@
-from typing import Optional, List, Dict, Type, Iterator
-from collections import namedtuple
 import csv
 import logging
+import os
+from collections import namedtuple
+from pathlib import Path
+from typing import Dict, Iterator, List, Optional, Type
 
 from django.db import models
-
 
 log = logging.getLogger(__name__)
 
@@ -22,11 +23,15 @@ NAICSClassificationRow = namedtuple(
     ],
 )
 
+BASE_DIR = Path(__file__).resolve().parent
+
 
 def read_naics_csv(
-    path: str, encoding="ISO-8859-1"
+    path: Optional[str] = None, encoding="ISO-8859-1"
 ) -> Iterator[NAICSClassificationRow]:
     """Load a NAICS CSV data file like those obtained from https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index"""
+    if path is None:
+        path = os.path.join(BASE_DIR, "NAICS-SCIAN-2017-Structure-V1-eng.csv")
     with open(path, encoding=encoding) as fp:
         reader = csv.DictReader(fp)
         for row in reader:
@@ -58,7 +63,7 @@ def read_naics_csv(
 
 
 def seed_database(
-    csv_path: str,
+    csv_path: Optional[str] = None,
     encoding: str = "ISO-8859-1",
     Model: Optional[Type[models.Model]] = None,
 ):
