@@ -5,9 +5,8 @@ from naics_scian.data import read_naics_csv
 CHOICES = [
     (
         row.code,
-        f"{row.code}: {row.structure} / {row.class_title}" + f"({row.superscript})"
-        if row.superscript
-        else "",
+        f"{row.code}: {row.structure} / {row.class_title}"
+        + (f" ({row.superscript})" if row.superscript else ""),
     )
     for row in read_naics_csv()
 ]
