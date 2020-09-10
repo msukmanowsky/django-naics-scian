@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 from naics_scian.data import read_naics_csv
 
@@ -36,9 +37,9 @@ class NAICSCodeField(models.CharField):
         kwargs["max_length"] = 10
         kwargs["choices"] = ALL_CODE_CHOICES
         if "help_text" not in kwargs:
-            kwargs[
-                "help_text"
-            ] = "NAICS code for all structures (sectors, subsectors, industry groups and industries)"
+            kwargs["help_text"] = mark_safe(
+                '<a href="https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index" target="_blank" rel="noopener noreferrer">NAICS code</a> for all structures (sectors, subsectors, industry groups and industries)'
+            )
         super().__init__(*args, **kwargs)
 
 
@@ -47,7 +48,9 @@ class NAICSSectorCodeField(models.CharField):
         kwargs["max_length"] = 10
         kwargs["choices"] = SECTOR_CODE_CHOICES
         if "help_text" not in kwargs:
-            kwargs["help_text"] = "NAICS code for sectors only"
+            kwargs["help_text"] = mark_safe(
+                '<a href="https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index" target="_blank" rel="noopener noreferrer">NAICS code</a> for sectors only'
+            )
         super().__init__(*args, **kwargs)
 
 
@@ -56,7 +59,7 @@ class NAICSIndustryCodeField(models.CharField):
         kwargs["max_length"] = 10
         kwargs["choices"] = INDUSTRY_CODE_CHOICES
         if "help_text" not in kwargs:
-            kwargs[
-                "help_text"
-            ] = "NAICS code for industries only (Industry or Canadian Industry)"
+            kwargs["help_text"] = mark_safe(
+                '<a href="https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index" target="_blank" rel="noopener noreferrer">NAICS code</a> for industries only (Industry or Canadian Industry)'
+            )
         super().__init__(*args, **kwargs)
