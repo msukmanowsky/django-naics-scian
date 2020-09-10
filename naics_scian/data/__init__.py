@@ -76,7 +76,9 @@ def seed_database(
         # Create one level at a time so foreign key relationships work
         log.info(f"Loading level {level} classifications...")
         level_rows = [row for row in rows if row.level == level]
-        kwargs = row._asdict()
-        kwargs["parent_id"] = kwargs.pop("parent_code")
-        classifications = [Model(**kwargs) for row in level_rows]
+        classifications = []
+        for row in level_rows:
+            kwargs = row._asdict()
+            kwargs["parent_id"] = kwargs.pop("parent_code")
+            classifications.append(Model(**kwargs))
         Model.objects.bulk_create(classifications)
