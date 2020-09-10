@@ -14,12 +14,12 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent
 
 
 def forward(apps, schema_editor):
-    NAICSClassification = apps.get_model("naics_scian.table", "NAICSClassification")
+    NAICSClassification = apps.get_model("table", "NAICSClassification")
     seed_database(Model=NAICSClassification)
 
 
 def reverse(apps, schema_editor):
-    NAICSClassification = apps.get_model("naics_scian.table", "NAICSClassification")
+    NAICSClassification = apps.get_model("table", "NAICSClassification")
     NAICSClassification.objects.all().delete()
 
 
