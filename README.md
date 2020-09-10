@@ -32,11 +32,13 @@ Note that this initial migration will also seed your database with the
 ## As a field
 
 ```python
-from naics_scian.fields import NAICSCodeField
+from naics_scian.fields import NAICSCodeField, NAICSSectorCodeField, NAICSIndustryCodeField
 
 class MyModel(models.Model):
 
-    industry = NAICSCodeField()
+    naics_code = NAICSCodeField()
+    sector_code = NAICSSectorCodeField()
+    industry_code = NAICSIndustryCodeField()
 ```
 
 
@@ -50,7 +52,7 @@ Add an additional app to your `INSTALLED_APPS`:
 INSTALLED_APPS = [
     # ...
     "naics_scian",
-    "naics_scian.table",
+    "naics_scian.naics_tables",
 ]
 ```
 
@@ -62,7 +64,7 @@ from django.db import models
 class MyModel(models.Model):
 
     industry = ForeignKey(
-        "naics_scian.NAICSClassification",
+        "naics_tables.NAICSClassification",
         blank=True,
         null=True,
         on_delete=models.SET_NULL
