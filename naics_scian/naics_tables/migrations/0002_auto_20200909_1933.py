@@ -29,4 +29,4 @@ class Migration(migrations.Migration):
         ("naics_tables", "0001_initial"),
     ]
 
-    operations = []
+    operations = [migrations.RunPython(forward, reverse)]
