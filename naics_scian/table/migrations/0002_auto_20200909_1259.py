@@ -26,7 +26,7 @@ def reverse(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("naics_scian.table", "0001_initial"),
+        ("table", "0001_initial"),
     ]
 
     operations = [migrations.RunPython(forward, reverse)]
