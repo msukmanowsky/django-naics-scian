@@ -35,6 +35,10 @@ class NAICSCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = ALL_CODE_CHOICES
+        if "help_text" not in kwargs:
+            kwargs[
+                "help_text"
+            ] = "NAICS code for all structures (sectors, subsectors, industry groups and industries)"
         super().__init__(*args, **kwargs)
 
 
@@ -42,6 +46,8 @@ class NAICSSectorCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = SECTOR_CODE_CHOICES
+        if "help_text" not in kwargs:
+            kwargs["help_text"] = "NAICS code for sectors only"
         super().__init__(*args, **kwargs)
 
 
@@ -49,4 +55,8 @@ class NAICSIndustryCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = INDUSTRY_CODE_CHOICES
+        if "help_text" not in kwargs:
+            kwargs[
+                "help_text"
+            ] = "NAICS code for industries only (Industry or Canadian Industry)"
         super().__init__(*args, **kwargs)
