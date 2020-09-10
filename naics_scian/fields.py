@@ -35,8 +35,6 @@ class NAICSCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = ALL_CODE_CHOICES
-        kwargs.setdefault("blank", True)
-        kwargs.setdefault("null", True)
         super().__init__(*args, **kwargs)
 
 
@@ -44,8 +42,6 @@ class NAICSSectorCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = SECTOR_CODE_CHOICES
-        kwargs.setdefault("blank", True)
-        kwargs.setdefault("null", True)
         super().__init__(*args, **kwargs)
 
 
@@ -53,6 +49,4 @@ class NAICSIndustryCodeField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs["max_length"] = 10
         kwargs["choices"] = INDUSTRY_CODE_CHOICES
-        kwargs.setdefault("blank", True)
-        kwargs.setdefault("null", True)
         super().__init__(*args, **kwargs)
