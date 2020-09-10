@@ -5,7 +5,7 @@ import pathlib
 
 from django.core.management.base import BaseCommand, CommandError
 
-from naics_scian.models import NAICSClassification
+from naics_scian.naics_tables.models import NAICSClassification
 from naics_scian.data import seed_database
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent

@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
                         help_text="Parent classification (null if top-level)",
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="naics_scian.naicsclassification",
+                        to="naics_scian.naics_tables.naicsclassification",
                     ),
                 ),
             ],
