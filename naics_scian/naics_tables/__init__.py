@@ -1,1 +1,1 @@
-default_app_config = "naics_tables.apps.NAICSTablesConfig"
+default_app_config = "naics_scian.naics_tables.apps.NAICSTablesConfig"
