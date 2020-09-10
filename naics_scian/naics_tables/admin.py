@@ -1,5 +1,5 @@
 from django.contrib import admin
-from naics_scian.table.models import NAICSClassification
+from naics_scian.naics_tables.models import NAICSClassification
 
 
 @admin.register(NAICSClassification)
