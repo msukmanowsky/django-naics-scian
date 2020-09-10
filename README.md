@@ -1,7 +1,9 @@
 # What is this?
 
-A Django app that adds a table for the [Canadian version of the North American Industry Classification System](https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index). Handy when you want a standardized list of
-
+A Django app that adds a fields and an optional table for the Canadian version
+of the [North American Industry Classification System](https://www.statcan.gc.ca/eng/subjects/standard/naics/2017/index).
+Handy when you want a standardized list of sectors or industries that you can
+attach to something like a `Company` model.
 
 # Installation
 
@@ -34,13 +36,14 @@ Note that this initial migration will also seed your database with the
 ```python
 from naics_scian.fields import NAICSCodeField, NAICSSectorCodeField, NAICSIndustryCodeField
 
-class MyModel(models.Model):
+class Company(models.Model):
 
     naics_code = NAICSCodeField()
+    # Or...
     sector_code = NAICSSectorCodeField()
+    # Or if you only care about the industry...
     industry_code = NAICSIndustryCodeField()
 ```
-
 
 ## As a table
 
